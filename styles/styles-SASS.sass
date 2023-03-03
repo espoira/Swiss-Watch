@@ -1,4 +1,8 @@
-font-face 
+@charset "UTF-8"
+@function unicode($str)
+  @return unquote("\"")+unquote(str-insert($str, "\\", 1))+unquote("\"")
+
+@font-face 
 	font-family: 'Font Awesome'
 	src: url("FontAwesome.otf")
 
@@ -51,14 +55,17 @@ a
 		margin-right: 23px
 	
 
-#search:after 
-	content: '\f002'
+#search
+  &:after 
+	content: unicode("f002")
 
-#like:after 
-	content: '\f08a'
+#like
+  &:after 
+	content: unicode("f08a")
 
-#cart:after 
-	content: '\f07a'
+#cart
+  &:after 
+	content: unicode("f07a")
 
 main .ico 
 	margin-top: 95px
@@ -68,14 +75,17 @@ main .ico
 		margin-right: 12px
 	
 
-#instagram:after 
-	content: '\f16d'
+#instagram
+  &:after 
+	content: unicode("f16d")
 
-#facebook:after 
-	content: '\f09a'
+#facebook
+  &:after 
+	content: unicode("f09a")
 
-#twitter:after 
-	content: '\f099'
+#twitter
+  &:after 
+	content: unicode("f099")
 
 .upper-symb 
 	width: 13px
@@ -100,7 +110,7 @@ h1
 	color: #1B1A17
 
 h2 
-	margin-top: 60px
+	margin-top: 75px
 	font-size: 32px
 	line-height: 43px
 	color: #1B1A17
@@ -146,16 +156,22 @@ p
 	line-height: 21px
 	color: rgba(27, 26, 23, 0.82)
 
+section 
+	overflow: hidden
+
 .collection 
-	height: 768px
-	padding: 5px 185px
+	padding: 5px 98px
 	background: #FDFDFB
-	text-align: left
 	div 
-		height: 800px
 		float: left
-		display: inline-block
 		margin: 0px
+	
+	.left-block 
+		width: 800px
+		height: 780px
+		margin-left: 87px
+		text-align: left
+		overflow: hidden
 	
 	p 
 		padding: 5px 0px 18px 0px
@@ -164,46 +180,52 @@ p
 		background: #444240
 	
 	b 
-		top: 253px
-		left: -67px
-		position: relative
-		font-weight: 400px
+		font-weight: normal
 		letter-spacing: -0.14em
 		color: #8B8371
 	
 	.price 
-		top: -180px
-		left: 380px
-		position: relative
-		font-family: 'Prata', serif
-		font-size: 16px
-		line-height: 22px
-		color: #1B1A17
+		margin-top: 140px
+		margin-left: -410px
+	
+	.size 
+		margin-top: 640px
+		margin-left: 65px
 	
 	i 
 		font-size: 17px
 	
-	#watch 
-		text-align: center
-	
 	img 
-		margin-left: 15px
-		height: 800px
-		width: 500px
-		padding-left: 100px
-		border: 1px solid transparent
-		background: linear-gradient(270deg, rgba(234, 227, 212, 0) 0%, #EAE3D4 100%)
+		margin: 5px 0px 0px -325px
+		position: absolute
+	
+	#color-circle 
+		width: 750px
+		height: 850px
+		top: -500px
+		left: 284px
+		position: relative
+		background: linear-gradient(180deg, rgba(234, 227, 212, 0) 0%, #EAE3D4 100%)
 		border-radius: 50%
-		overflow: hidden
 	
 
-#watch b 
+.left-block b 
+	margin-top: -20px
+	margin-left: -70px
+	position: absolute
+
+.right-block b 
+	top: 0px
+	left: 10px
+	padding-right: 25px
 	position: relative
 
-.price b 
-	top: 0px
-	left: -10px
-	position: relative
+.right-block p 
+	position: absolute
+	font-family: 'Prata', serif
+	font-size: 16px
+	line-height: 22px
+	color: #1B1A17
 
 .models 
 	text-align: center
@@ -218,11 +240,20 @@ p
 	
 	img 
 		width: 313px
-		border-radius: 50%
-		border: 1px solid transparent
-		background: linear-gradient(270deg, rgba(226, 208, 196, 1) 0%, rgba(226, 208, 196, 0) 75%)
-		box-shadow: inset -50px 0px 100px 10px #FDFDFB
 		filter: drop-shadow(2px 2px 10px rgba(85, 82, 72, 0.23))
+	
+	.circle 
+		width: 235px
+		height: 225px
+		top: -440px
+		position: relative
+		margin-bottom: -375px
+		border: 1px solid transparent
+		background: linear-gradient(270deg, rgba(226, 208, 196, 0.65) 0%, rgba(226, 208, 196, 0) 100%)
+		//-webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)
+		//-webkit-mask-composite: xor
+		//mask-composite: exclude
+		border-radius: 50%
 	
 	a 
 		float: right
@@ -296,7 +327,6 @@ i
 	top: 45px
 	position: relative
 	padding: 26px 38px
-	font-family: 'Roboto'
 	font-weight: 500
 	font-size: 12px
 	line-height: 14px
@@ -305,20 +335,45 @@ i
 	color: #FFFFFF
 	background: #D4B098
 
-.ellipse 
-	width: 300px
-	height: 300px
-	right: 20px
-	position: absolute
+.quality .lines 
+	float: right
+	position: relative
 	border: 1px solid transparent
-	background: linear-gradient(270deg, rgba(212, 176, 152, 1) 0%, rgba(212, 176, 152, 0) 75%)
-	-webkit-mask: linear-gradient(#fff 0 0) padding-box, 
-     linear-gradient(#fff 0 0)
-	-webkit-mask-composite: xor
-	mask-composite: exclude
-	border: 1px solid rgba(212, 176, 152, 1)
+	//-webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)
+	//-webkit-mask-composite: xor
+	//mask-composite: exclude
 	border-radius: 50%
-	overflow: hidden
+
+.quality .ellipse-large 
+	width: 570px
+	height: 650px
+	top: -600px
+	left: 350px
+	background: linear-gradient(0deg, rgba(212, 176, 152, 1) 0%, rgba(212, 176, 152, 0.5) 100%)
+
+.quality .ellipse-small 
+	width: 355px
+	height: 355px
+	top: -425px
+	left: 135px
+	background: linear-gradient(60deg, rgba(212, 176, 152, 1) 0%, rgba(212, 176, 152, 0.5) 100%)
+
+.pagination 
+	top: -37px
+	left: -100px
+	position: relative
+	a 
+		margin: 0px 7px
+		vertical-align: middle
+		font-family: 'Prata', serif
+		font-size: 12px
+		line-height: 16px
+		color: rgba(27, 26, 23, 0.82)
+		&:first-child, &:last-child 
+			font-size: 24px
+			color: rgba(27, 26, 23, 1)
+		
+	
 
 .company-news 
 	padding: 0px 98px
